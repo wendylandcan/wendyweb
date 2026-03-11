@@ -365,7 +365,7 @@ const Projects = () => {
                     {/* Multiple Links */}
                     {project.links && (
                       <div className="flex flex-col gap-2 mt-auto">
-                        {project.links.map((linkItem, idx) => (
+                        {project.links.map((linkItem) => (
                           <motion.a
                             key={linkItem.url}
                             href={linkItem.url}

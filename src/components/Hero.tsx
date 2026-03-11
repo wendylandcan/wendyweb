@@ -11,7 +11,6 @@ const CharacterTypewriter = ({ text }: { text: string }) => {
       opacity: 1,
       transition: {
         staggerChildren: 0.03,
-        ease: 'linear',
       },
     },
   };
@@ -20,7 +19,7 @@ const CharacterTypewriter = ({ text }: { text: string }) => {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { duration: 0.01, ease: 'linear' },
+      transition: { duration: 0.01 },
     },
   };
 
@@ -35,19 +34,7 @@ const CharacterTypewriter = ({ text }: { text: string }) => {
   );
 };
 
-// 光标组件 - 在标题完成后消失
-const Cursor = () => {
-  return (
-    <motion.span
-      initial={{ opacity: 1 }}
-      animate={{ opacity: 0 }}
-      transition={{ delay: 1.5, duration: 0.3, ease: 'easeOut' }}
-      className="ml-1 inline-block"
-    >
-      |
-    </motion.span>
-  );
-};
+// 光标组件 - 在标题完成后消失 (已移除，不再使用)
 
 const Hero = () => {
   return (
@@ -91,7 +78,7 @@ const Hero = () => {
               className="text-xl md:text-2xl text-slate-700 leading-relaxed mb-6"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.6, duration: 0.8, ease: 'easeOut' }}
+              transition={{ delay: 1.6, duration: 0.8 }}
             >
               以法律之逻辑，赋 AI 以温情。
             </motion.p>
@@ -100,7 +87,7 @@ const Hero = () => {
               className="text-lg text-slate-600 leading-relaxed mb-8"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.6, duration: 0.8, ease: 'easeOut' }}
+              transition={{ delay: 1.6, duration: 0.8 }}
             >
               上海交通大学法学硕士（2026届）· 法律职业资格A证 ·
               Intel Impact Reward 获得者 · 莉莉丝游戏 AI 大赛唯一获奖职能部门作品
@@ -111,7 +98,7 @@ const Hero = () => {
               className="flex gap-4 flex-wrap"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.6, duration: 0.8, ease: 'easeOut' }}
+              transition={{ delay: 1.6, duration: 0.8 }}
             >
               <motion.a
                 href="#projects"
