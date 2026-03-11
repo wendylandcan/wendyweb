@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { GraduationCap, Scale, Award, Rocket } from 'lucide-react';
+import { GraduationCap, Scale, Award, Rocket, Download } from 'lucide-react';
 import AnimatedSection from './AnimatedSection';
 
 const About = () => {
@@ -106,6 +106,27 @@ const About = () => {
             <p className="text-lg text-slate-700 leading-relaxed">
               我不只在构建应用，更在构建一种链接，发挥 AI 的真实价值与无限潜力。未来已来，我愿作为那个守护逻辑、也传递温度的 Builder，让 AI 真正回归服务于人的本质。
             </p>
+
+            <motion.a
+              href="/resume.pdf"
+              download="曹嘉璇_简历_2026.06毕业-AI方向求职.pdf"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
+              className="inline-flex items-center gap-2 mt-8 px-6 py-3 text-white font-semibold rounded-lg transition-all duration-300"
+              style={{ background: 'linear-gradient(to right, #4338CA, #6366F1)' }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = 'linear-gradient(to right, #3730A3, #4F46E5)';
+                e.currentTarget.style.boxShadow = 'inset 0 1px 2px rgba(255, 255, 255, 0.15)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = 'linear-gradient(to right, #4338CA, #6366F1)';
+                e.currentTarget.style.boxShadow = 'none';
+              }}
+              aria-label="下载简历"
+            >
+              <Download size={20} />
+              <span>下载简历</span>
+            </motion.a>
           </motion.div>
         </motion.div>
       </div>
