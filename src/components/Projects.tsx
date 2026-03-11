@@ -45,8 +45,7 @@ const projects = [
     link: 'https://liqingai.zeabur.app/',
     metric: '60%',
     metricLabel: 'API 成本降低',
-    silhouetteImage: '/liqingai-silhouette.png',
-    slogan: '清官爱断家务事，AI专理意难平。',
+    silhouetteImage: '/dingdangmiao-silhouette.png',
     details: {
       problem: [
         '通用 AI 判官极易"倒戈"：伴侣尝试用通用对话 AI 评理时，AI 往往缺乏严谨的程序正义，"谁先发言就偏向谁"，无法提供公平的举证质证环节，难以服众。',
@@ -86,7 +85,7 @@ const projects = [
       { label: '查看项目详情', url: '/dingdangmiao.pdf', color: '#5A56E0' },
       { label: '观看演示视频', url: '/dingdangmiao-video.mp4', color: '#5A56E0' },
     ],
-    silhouetteImage: '/doraemon-new.png',
+    silhouetteImage: '/liqingai-silhouette.png',
   },
   {
     id: 'interactive-engine',
