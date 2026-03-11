@@ -251,3 +251,15 @@ body > * {
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
+
+/* 流光动效 - 文字流动 */
+@keyframes flow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-text-flow {
+  background-size: 200% auto;
+  animation: flow 5s linear infinite;
+}

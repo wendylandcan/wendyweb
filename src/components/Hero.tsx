@@ -68,7 +68,7 @@ const Hero = () => {
             {/* Main Heading - 字符级打字机效果 */}
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight">
               <CharacterTypewriter text="Hi I'm Wendy, " />
-              <span className="bg-gradient-to-r from-indigo-500 via-purple-500 to-indigo-600 bg-clip-text text-transparent inline-block">
+              <span className="bg-gradient-to-r from-indigo-500 via-purple-500 to-indigo-600 bg-clip-text text-transparent inline-block animate-text-flow">
                 <CharacterTypewriter text="AI Legal Tech Builder." />
               </span>
             </h1>
