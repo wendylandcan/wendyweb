@@ -101,7 +101,7 @@ const projects = [
       { label: '宝可梦性格测试 Demo', url: 'https://pokemontest.zeabur.app', color: '#5A56E0' },
       { label: '守护甜心性格测试 Demo', url: 'https://sweethearttest.zeabur.app', color: '#5A56E0' },
     ],
-    silhouetteImage: '/pikachu-silhouette.png',
+    silhouetteImage: '/pokemon-pikachu.png',
     details: {
       problem: [
         '商业流失：优质题库缺乏准入控制，极易被爬取或无限制白嫖。',
