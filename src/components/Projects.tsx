@@ -45,7 +45,8 @@ const projects = [
     link: 'https://liqingai.zeabur.app/',
     metric: '60%',
     metricLabel: 'API 成本降低',
-    silhouetteImage: '/dingdangmiao-silhouette.png',
+    silhouetteImage: '/liqingai-heart-gavel.png',
+    slogan: '清官爱断家务事，AI专理意难平。',
     details: {
       problem: [
         '通用 AI 判官极易"倒戈"：伴侣尝试用通用对话 AI 评理时，AI 往往缺乏严谨的程序正义，"谁先发言就偏向谁"，无法提供公平的举证质证环节，难以服众。',
