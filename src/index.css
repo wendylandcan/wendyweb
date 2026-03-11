@@ -1,0 +1,253 @@
+@import "tailwindcss";
+
+/* 全局背景 - 视觉冲击版 */
+body {
+  background-color: #F1F5F9;
+  background-image:
+    /* 第一层：锐利逻辑网格 (透明度 0.15) */
+    linear-gradient(to right, #e2e8f0 1px, transparent 1px),
+    linear-gradient(to bottom, #e2e8f0 1px, transparent 1px),
+    /* 第二层：纸张颗粒感 (Noise) */
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.5' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E"),
+    /* 第三层：微弱线性渐变 */
+    linear-gradient(135deg, #F1F5F9 0%, #E2E8F0 50%, #F8FAFC 100%);
+  background-size:
+    40px 40px,
+    40px 40px,
+    auto,
+    auto;
+  background-attachment: fixed;
+  background-position:
+    0 0,
+    0 0,
+    center,
+    center;
+}
+
+/* 噪点纹理叠加层 - 使用伪元素实现 overlay blend mode */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise2'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.5' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise2)' opacity='0.02'/%3E%3C/svg%3E");
+  background-attachment: fixed;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* 流动弥散光 - 左上角 (动画) */
+body::after {
+  content: '';
+  position: fixed;
+  top: -400px;
+  left: -400px;
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, rgba(191, 219, 254, 0.5) 0%, transparent 70%);
+  filter: blur(150px);
+  pointer-events: none;
+  z-index: 0;
+  animation: float-mesh 20s ease-in-out infinite;
+}
+
+/* 流动弥散光 - 右下角 (动画) */
+html::before {
+  content: '';
+  position: fixed;
+  bottom: -400px;
+  right: -400px;
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, rgba(165, 180, 252, 0.5) 0%, transparent 70%);
+  filter: blur(150px);
+  pointer-events: none;
+  z-index: 0;
+  animation: float-mesh-reverse 25s ease-in-out infinite;
+}
+
+/* 流动弥散光 - 右上角 */
+html::after {
+  content: '';
+  position: fixed;
+  top: -350px;
+  right: -350px;
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(147, 197, 253, 0.35) 0%, transparent 70%);
+  filter: blur(150px);
+  pointer-events: none;
+  z-index: 0;
+  animation: float-mesh 22s ease-in-out infinite;
+}
+
+/* 浮动动画 */
+@keyframes float-mesh {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(30px, -40px);
+  }
+  50% {
+    transform: translate(-20px, 30px);
+  }
+  75% {
+    transform: translate(40px, 20px);
+  }
+}
+
+@keyframes float-mesh-reverse {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(-30px, 40px);
+  }
+  50% {
+    transform: translate(20px, -30px);
+  }
+  75% {
+    transform: translate(-40px, -20px);
+  }
+}
+
+/* 确保所有内容在伪元素上方 */
+body > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* 数字呼吸动画 */
+@keyframes breathe {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 0.85;
+  }
+}
+
+.number-breathe {
+  animation: breathe 3s ease-in-out infinite;
+  display: inline-block;
+}
+
+/* 水波纹扩散效果 */
+@keyframes ripple {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+/* Diffusion 扩散动画 - SSE 流式效果 */
+@keyframes diffusion {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 0.15;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.2);
+  }
+}
+
+.silhouette-diffusion {
+  animation: none;
+}
+
+/* 仅在 group-hover 时播放 diffusion 动画 */
+.group:hover .silhouette-diffusion {
+  animation: diffusion 2.5s ease-out infinite;
+}
+
+.card-ripple {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-ripple::before {
+  content: none;
+}
+
+.card-ripple:hover::before {
+  content: none;
+}
+
+/* Neumorphic 新态感阴影 - 强化版以适应深灰蓝背景 */
+.neumorphic-card {
+  box-shadow:
+    0 8px 30px rgb(0, 0, 0, 0.04);
+  border: 1px solid rgba(226, 232, 240, 0.5);
+  filter: none;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
+}
+
+.neumorphic-card:hover {
+  box-shadow:
+    0 12px 40px rgb(0, 0, 0, 0.06);
+  border: 1px solid rgba(226, 232, 240, 0.7);
+  filter: none;
+  transform: translateY(-2px);
+}
+
+.neumorphic-card:focus {
+  outline: none;
+  box-shadow:
+    0 8px 30px rgb(0, 0, 0, 0.04);
+  border: 1px solid rgba(226, 232, 240, 0.5);
+  filter: none;
+}
+
+.neumorphic-card:active {
+  outline: none;
+  box-shadow:
+    0 8px 30px rgb(0, 0, 0, 0.04);
+  border: 1px solid rgba(226, 232, 240, 0.5);
+  filter: none;
+}
+
+/* 蓝色高亮脉冲 */
+@keyframes pulse-blue {
+  0%, 100% {
+    color: #3730A3;
+    text-shadow: 0 0 8px rgba(55, 48, 163, 0.3);
+  }
+  50% {
+    color: #4F46E5;
+    text-shadow: 0 0 16px rgba(55, 48, 163, 0.5);
+  }
+}
+
+.text-pulse-blue {
+  animation: pulse-blue 2.5s ease-in-out infinite;
+}
+
+/* 玻璃态效果 */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* 渐变文字 */
+.gradient-text {
+  background: linear-gradient(to right, #3730A3, #6366F1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
