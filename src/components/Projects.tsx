@@ -45,7 +45,7 @@ const projects = [
     link: 'https://liqingai.zeabur.app/',
     metric: '60%',
     metricLabel: 'API 成本降低',
-    silhouetteImage: '/liqingai-silhouette.png',
+    silhouetteImage: '/doraemon-new.png',
     slogan: '清官爱断家务事，AI专理意难平。',
     details: {
       problem: [
@@ -86,7 +86,7 @@ const projects = [
       { label: '查看项目详情', url: '/dingdangmiao.pdf', color: '#5A56E0' },
       { label: '观看演示视频', url: '/dingdangmiao-video.mp4', color: '#5A56E0' },
     ],
-    silhouetteImage: '/dingdangmiao-silhouette.png',
+    silhouetteImage: '/pikachu-silhouette.png',
   },
   {
     id: 'interactive-engine',
@@ -101,7 +101,7 @@ const projects = [
       { label: '宝可梦性格测试 Demo', url: 'https://pokemontest.zeabur.app', color: '#5A56E0' },
       { label: '守护甜心性格测试 Demo', url: 'https://sweethearttest.zeabur.app', color: '#5A56E0' },
     ],
-    silhouetteImage: '/pikachu-silhouette.png',
+    silhouetteImage: '/liqingai-silhouette.png',
     details: {
       problem: [
         '商业流失：优质题库缺乏准入控制，极易被爬取或无限制白嫖。',
