@@ -86,7 +86,7 @@ const projects = [
       { label: '查看项目详情', url: '/dingdangmiao.pdf', color: '#5A56E0' },
       { label: '观看演示视频', url: '/dingdangmiao-video.mp4', color: '#5A56E0' },
     ],
-    silhouetteImage: '/doraemon-new.png',
+    silhouetteImage: '/dingdangmiao-silhouette.png',
   },
   {
     id: 'interactive-engine',
@@ -101,7 +101,7 @@ const projects = [
       { label: '宝可梦性格测试 Demo', url: 'https://pokemontest.zeabur.app', color: '#5A56E0' },
       { label: '守护甜心性格测试 Demo', url: 'https://sweethearttest.zeabur.app', color: '#5A56E0' },
     ],
-    silhouetteImage: '/pikachu.png',
+    silhouetteImage: '/pikachu-silhouette.png',
     details: {
       problem: [
         '商业流失：优质题库缺乏准入控制，极易被爬取或无限制白嫖。',
@@ -131,6 +131,7 @@ const projects = [
 const Projects = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
+  const [hoveredProjectId, setHoveredProjectId] = useState<string | null>(null);
 
   const openModal = (project: typeof projects[0]) => {
     setSelectedProject(project);
@@ -175,10 +176,12 @@ const Projects = () => {
               }}
               tabIndex={0}
               role="article"
+              onMouseEnter={() => setHoveredProjectId(projects[0].id)}
+              onMouseLeave={() => setHoveredProjectId(null)}
             >
               {/* Hover 剪影背景层 - 心形法槌 */}
               <div
-                className="absolute inset-0 z-0 opacity-0 transition-opacity duration-500 pointer-events-none"
+                className="absolute inset-0 z-0 transition-opacity duration-500 pointer-events-none"
                 style={{
                   backgroundColor: '#3730A3',
                   maskImage: `url('${projects[0].silhouetteImage}')`,
@@ -189,6 +192,7 @@ const Projects = () => {
                   WebkitMaskSize: 'contain',
                   WebkitMaskRepeat: 'no-repeat',
                   WebkitMaskPosition: 'center',
+                  opacity: hoveredProjectId === projects[0].id ? 0.15 : 0,
                 }}
               />
 
@@ -294,11 +298,13 @@ const Projects = () => {
                   className="bg-white rounded-2xl overflow-hidden transition-all duration-400 h-full flex flex-col neumorphic-card relative group active:scale-[0.98] outline-none"
                   tabIndex={0}
                   role="article"
+                  onMouseEnter={() => setHoveredProjectId(project.id)}
+                  onMouseLeave={() => setHoveredProjectId(null)}
                 >
                   {/* Hover 剪影背景层 */}
                   {project.silhouetteImage && (
                     <div
-                      className="absolute inset-0 z-0 opacity-0 transition-opacity duration-500 pointer-events-none"
+                      className="absolute inset-0 z-0 transition-opacity duration-500 pointer-events-none"
                       style={{
                         backgroundColor: '#3730A3',
                         maskImage: `url('${project.silhouetteImage}')`,
@@ -309,6 +315,7 @@ const Projects = () => {
                         WebkitMaskSize: 'contain',
                         WebkitMaskRepeat: 'no-repeat',
                         WebkitMaskPosition: 'center',
+                        opacity: hoveredProjectId === project.id ? 0.15 : 0,
                       }}
                     />
                   )}
