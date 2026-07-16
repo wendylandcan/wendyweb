@@ -1,0 +1,142 @@
+import { motion } from 'framer-motion';
+import { GraduationCap, Scale, Trophy, Award, Rocket, Download } from 'lucide-react';
+import AnimatedSection from './AnimatedSection';
+
+const About = () => {
+  const highlights = [
+    {
+      icon: GraduationCap,
+      title: '教育背景',
+      content: '上海交通大学法学硕士（2026届）',
+    },
+    {
+      icon: Scale,
+      title: '专业资质',
+      content: '法律职业资格A证',
+    },
+    {
+      icon: Trophy,
+      title: 'iCourt 大赛',
+      content: '律所赛道二等奖',
+    },
+    {
+      icon: Award,
+      title: 'Intel 实习',
+      content: 'Impact Reward 获得者',
+    },
+    {
+      icon: Rocket,
+      title: '莉莉丝游戏',
+      content: 'AI 大赛唯一获奖职能部门作品',
+    },
+  ];
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5 },
+    },
+  };
+
+  return (
+    <AnimatedSection id="about" className="min-h-screen py-20 px-6 bg-transparent">
+      <div className="max-w-6xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <h2 className="text-4xl md:text-5xl font-bold text-center text-slate-900 mb-16">
+            关于我
+          </h2>
+
+          <motion.div
+            className="grid md:grid-cols-2 lg:grid-cols-5 gap-6 mb-16"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
+            {highlights.map((item, index) => {
+              const IconComponent = item.icon;
+              return (
+                <motion.div
+                  key={index}
+                  variants={itemVariants}
+                  className="bg-white/60 backdrop-blur-lg border border-white/20 p-6 rounded-xl shadow-md text-center hover:shadow-lg transition-shadow duration-300"
+                >
+                  <div className="flex justify-center mb-4">
+                    <IconComponent size={40} color="#3730A3" strokeWidth={1.5} />
+                  </div>
+                  <h3 className="font-bold text-slate-900 mb-2 text-lg">{item.title}</h3>
+                  <p className="text-sm text-slate-600">{item.content}</p>
+                </motion.div>
+              );
+            })}
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="bg-white/60 backdrop-blur-lg border border-white/20 p-8 md:p-12 rounded-2xl shadow-lg"
+          >
+            <p className="text-xl md:text-2xl font-bold bg-gradient-to-r from-indigo-900 to-indigo-600 bg-clip-text text-transparent mb-8">
+              以法律之逻辑，赋 AI 以温情。
+            </p>
+
+            <p className="text-lg text-slate-700 leading-relaxed mb-6">
+              作为一名行走在法律与技术边缘的跨界实践者，我始终在思考：如何用逻辑的力量解决真实世界的痛点。
+            </p>
+
+            <p className="text-lg text-slate-700 leading-relaxed mb-6">
+              从 Intel 的 Legal Bot 企业级合规提效，到莉莉丝游戏公司用订单喵项目斩获大奖的 AI 创新，我见证了算法从"冷冰冰的数字"进化为"有温度的助手"。而在《职引 Pilot》中，我把这份执念推向了更大的舞台 —— 作为产品负责人主导"劳动者 / 用工单位 / 律师"三端形态的产品设计，将复杂劳动法咨询抽象为 24 个标准业务场景，最终从 iCourt 第二届全国法律人 AI 应用大赛 410 支队伍、173 支律所队伍中脱颖而出，荣获律所赛道二等奖（前三名），让"法律可及性"从口号变成被验证的产品。这种对"重塑"的热爱贯穿始终：在《理清爱》中，我将严密的法庭质证框架引入情感调解，用 AI 裁判化解无效情绪，证明了法律逻辑亦能成为治愈的良方；而在《守护甜心 & 宝可梦性格测试》的高精度交互中，我通过自研的动态主题测试网站将儿时热爱具象化，赋予了技术跨越次元的生命力。
+            </p>
+
+            <p className="text-lg text-slate-700 leading-relaxed">
+              我不只在构建应用，更在构建一种链接，发挥 AI 的真实价值与无限潜力。未来已来，我愿作为那个守护逻辑、也传递温度的 Builder，让 AI 真正回归服务于人的本质。
+            </p>
+
+            <motion.a
+              href="/resume.pdf"
+              download="曹嘉璇-简历.pdf"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
+              className="inline-flex items-center gap-2 mt-8 px-6 py-3 text-white font-semibold rounded-lg transition-all duration-300"
+              style={{ background: 'linear-gradient(to right, #4338CA, #6366F1)' }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = 'linear-gradient(to right, #3730A3, #4F46E5)';
+                e.currentTarget.style.boxShadow = 'inset 0 1px 2px rgba(255, 255, 255, 0.15)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = 'linear-gradient(to right, #4338CA, #6366F1)';
+                e.currentTarget.style.boxShadow = 'none';
+              }}
+              aria-label="下载简历"
+            >
+              <Download size={20} />
+              <span>下载简历</span>
+            </motion.a>
+          </motion.div>
+        </motion.div>
+      </div>
+    </AnimatedSection>
+  );
+};
+
+export default About;
